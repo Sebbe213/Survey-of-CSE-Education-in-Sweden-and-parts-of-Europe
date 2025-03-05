@@ -1,10 +1,10 @@
-
 To assess how well students enjoy the university that they attend faculty gives out student barometers where student answers questions and often give a score.
 
 Your task is to gather student barometer data for the most common questions that are often stated in these barometers.  This is an example of a question that may be included: 
 "Overall Satisfaction : How satisfied are you with your overall experience at the university?"
 
-You need to find 5 questions and include the question and score in the final result.
+You need to find 5 questions and include the question and score in the final result. The results should be from the year 2023 or 2024 if available if not you can choose from older barometers. 
+Note! The information can be taken from any source that has it publicly available. They do not need to come from the university website if they do not provide it.
 
 You need to only find data for these 10 universities that are stated below: 
 
