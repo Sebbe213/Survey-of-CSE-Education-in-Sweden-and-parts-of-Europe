@@ -1,0 +1,26 @@
+
+To assess how well students enjoy the university that they attend faculty gives out student barometers where student answers questions and often give a score.
+
+Your task is to gather student barometer data for the most common questions that are often stated in these barometers.  This is an example of a question that may be included: 
+"Overall Satisfaction : How satisfied are you with your overall experience at the university?"
+
+You need to find 5 questions and include the question and score in the final result.
+
+You need to only find data for these 10 universities that are stated below: 
+
+Chalmers Tekniska Högskola, Sweden
+University of Gothenburg,Sweden
+KTH, Sweden
+Norwegian University of Science and Technology, Norway
+Universitat Politècnica de València, Spain
+Gdańsk University of Technology, Poland
+Politechnika Warszawska, Poland
+Politecnico di Milano, Italy
+Rheinisch-Westfälische Technische Hochschule Aachen, Germany
+Technische Universität Berlin, Germany
+
+Note! If the data is not available then you should clearly state that.
+
+The findings should be made into a csv file that I can copy and include in my project.
+
+At the very end include all the links used in IEEE format.

@@ -1,0 +1,6 @@
+"A student barometer often has multiple questions that a student is asked to answer. The problem is that different universities ask different questions or formulate them in a different way. 
+
+My task to you is to find the 5 most common questions across different student barometers. 
+After you are done I want you to list all the questions in a csv file.
+
+Lastly compose all the links you have used in IEEE format."
