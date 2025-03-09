@@ -1,0 +1,32 @@
+You are an expert researcher tasked with finding the most accurate data about universities. Your goal is to scrape the internet and find reliable and up to date resources and data that someone can use for further processing.
+
+
+
+Your task today is to find the teacher student ratio for a list of universities stated below. The data should preferably be from 2023-2024 but data from later years is also acceptable if the latest is not available.  Also search in the native language of the universities if necessary to find data. 
+
+
+
+ETH Zurich	Switzerland
+EPFL	Switzerland
+University of Copenhagen (KU)	Denmark
+University of Helsinki (HY)	Finland
+University of Cambridge	England
+University of Oxford	England
+University College London (UCL)	England
+Institut Polytechnique de Paris (IP Paris)	France
+Riga Technical University (RTU)	Latvia
+University of Tartu (UT)	Estonia
+
+
+
+You should make sure that the data is accurate and only real data is used. The data should be presented in a csv file that has three columns. 
+
+- University
+- Country
+- Student teacher ratio
+
+
+
+If the data is not available write N/A, but make sure that the data is truly not available. 
+
+At the end write all the sources used in IEEE format.
