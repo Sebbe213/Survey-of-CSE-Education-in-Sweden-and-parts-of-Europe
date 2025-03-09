@@ -26,3 +26,10 @@ The LLMS planed to be used are:
 The process will first consist of triangulation. This means that we will utilize multiple LLMs, providing the same prompt to all of them. This ensures that the prompt given is well structured and consistent, as well as verifying the accuracy of the scraped data. By comparing the outputs of the LLMs, we can quickly spot any ambiguities in our prompts.
 
 ## Prompt Engineering
+Our strategy for prompt engineering is simple. It consists of a few steps.
+
+- Be specific – Try to be as specific in your prompt as possible. A good strategy is to think that you are explaining to a child. This helps narrow down the fields of possible responses, creating a more accurate output.
+- Always include a goal – Define a clear mission that the LLM needs to solve. Example: Your objective is to help a research team find data about life span in Sweden.
+- Give it a role – Make the model act as something specific. Example: You are a school teacher...
+- Include constraints and disclaimers – Specify things that the LLM should look out for or avoid. Example: Do not include sources from non-government organizations.
+- Include examples for clarity – Provide examples of how the data should be presented or what kind of data should be scraped.
