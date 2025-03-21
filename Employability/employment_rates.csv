@@ -1,28 +1,26 @@
-University,Abbreviation,Country,Field,"UG, PG or Overall",Employment Rate (%) ,Timeframe (Months),Year of Reporting,Resource Name
-Chalmers Tekniska Högskola,Chalmers,Sweden,all,Overall,90,6,2018,Chalmers Student Recruitment Brochure 2021
-Chalmers Tekniska Högskola,Chalmers,Sweden,all,Overall,98,12,2018,Chalmers Student Recruitment Brochure 2021
-University of Gothenburg,N/A,Sweden,all,Overall,81,12,2019,GU Annual Report 2022
-KTH Royal Institute of Technology,KTH,Sweden,CSE,PG,90,6,2018,KTH Career Presentation
-KTH Royal Institute of Technology,KTH,Sweden,all,Overall,81,12,2021,QS Graduate Employability
-Norwegian University of Science & Technology,NTNU,Norway,CSE,Overall,90,6,2019,NTNU Graduate Survey 2022
-Norwegian University of Science & Technology,NTNU,Norway,CSE,Overall,95,12,2019,NTNU Graduate Survey 2022
-Universitat Politècnica de València,UPV,Spain,CSE,UG,90,12,2021,UPV ETSINF Graduate Report
-Gdańsk University of Technology,PG,Poland,CSE,Overall,57,0,2018,PG Alumni Career Survey
-Gdańsk University of Technology,PG,Poland,CSE,Overall,85,6,2018,PG Alumni Career Survey
-Politechnika Warszawska,N/A,Poland,all,Overall,88,12,2018,Ministry of Education Data
-Politecnico di Milano,Polimi,Italy,CSE,PG,92,6,2019,Polimi Employment Survey
-Politecnico di Milano,Polimi,Italy,CSE,PG,97,12,2023,Polimi Occupation Survey
-RWTH Aachen University,RWTH,Germany,all,Overall,90,12,2024,Graduate Employability Report
-Technische Universität Berlin,TU Berlin,Germany,all,Overall,91,12,2024,QS Graduate Employability
-Technical University of Munich,TUM,Germany,all,Overall,95,12,2024,Global Employability Ranking
-ETH Zurich,ETH,Switzerland,CSE,Overall,99,6,2023,ETH Zurich Career Stats
-EPFL,EPFL,Switzerland,CSE,Overall,94,6,2020,EPFL Graduate Survey
-University of Copenhagen,KU,Denmark,all,Overall,77,12,2017,Ministry of Higher Ed. Analysis
-University of Helsinki,HY,Finland,all,Overall,94,60,2020,Univ. of Helsinki Graduate Employment
-University of Cambridge,Cambridge,England,CSE,UG,95,15,2022,UK Graduate Outcomes
-University of Oxford,Oxford,England,all,UG,93,15,2021,Oxford University Facts & Figures
-University of Oxford,Oxford,England,all,PG,95,15,2021,Oxford University Facts & Figures
-University College London,UCL,England,CSE,UG,75,15,2022,UK Graduate Outcomes
-Institut Polytechnique de Paris,IP Paris,France,CSE,PG,100,6,2022,École Polytechnique First Job Survey
-Riga Technical University,RTU,Latvia,all,Overall,88,12,2018,Latvian Ministry Graduate Survey
-University of Tartu,UT,Estonia,all,Overall,77,12,2022,Eurostat – Employment Rate
+University,Country,Employment Rate (%),Year of Reporting,"Degree Level (UG,PG,PhD)",Time Frame (Months),Scope of Employment Rate,Field Specificity
+Chalmers Tekniska Högskola,Sweden,95.3,2024,PG,36,University-specific,STEM
+University of Gothenburg,Sweden,79,2024,PG,18,University-specific,STM
+KTH Royal Institute of Technology,Sweden,97,2018,PG,24,University-specific,All
+Norwegian Univ. of Science & Tech. (NTNU),Norway,98,2022,PG,18,University-specific,All
+Universitat Politècnica de València (UPV),Spain,90,2023,UG,0,University-specific,CS/IT
+Universitat Politècnica de València (UPV),Spain,94.5,2023,UG,36,University-specific,CS/IT
+Gdańsk University of Technology,Poland,80,2019,PG,N/A,University-specific,CS/IT
+Politecnico di Milano (Polimi),Italy,97,2024,PG,12,University-specific,All
+Politecnico di Milano (Polimi),Italy,91,2024,UG,12,University-specific,All
+Politechnika Warszawska (Warsaw UT),Poland,73,2020,PG,N/A,University-specific,CS/IT
+Rheinisch-Westfälische Technische Hochschule Aachen (RWTH Aachen),Germany,90,2024,PG,12,University-specific,All
+Technische Universität Berlin (TU Berlin),Germany,91,2024,PG,12,University-specific,All
+Technical University of Munich (TUM),Germany,95,2024,PG,,University-specific,All
+ETH Zurich (Swiss Federal Inst. of Technology Zurich),Switzerland,97,2025,PG,12,University-specific,STEM
+École Polytechnique Fédérale de Lausanne (EPFL),Switzerland,94,2020,PG,,University-specific,STEM
+University of Copenhagen (KU),Denmark,98.3,2022,G,,National,STEM
+University of Helsinki (HY),Finland,89,2019,PG,12,University-specific,All
+University of Cambridge,England,95,2022,UG,15,University-specific,CS/IT
+University of Oxford,England,93,2022,UG,15,University-specific,All
+University of Oxford,England,95,2022,PG,15,University-specific,All
+University College London (UCL),England,75,2022,UG,15,University-specific,CS/IT
+Institut Polytechnique de Paris (IP Paris) (Data from École Polytechnique),France,100,2019,PG,6,University-specific,Engineering
+Riga Technical University (RTU),Latvia,88,2019,PG,12,National,All
+University of Tartu (UT),Estonia,87,2019,UG,6,University-specific,All
+University of Tartu (UT),Estonia,94,2019,PG,6,University-specific,All

@@ -1,12 +1,9 @@
-Research Analyst Persona Prompt:
+NOTE: This prompt was given to Deep-research bots in two rounds, each with half of the universities listed below. This was done to enrich the pool of resources used in each research round.
+
 
 Hello, esteemed Research Analyst,
-You are an expert in higher education statistics and labor
-market trends, with a specialized focus on employment outcomes
-for graduates in technical fields. Your task is to perform a
-comprehensive analysis of employment rates for both undergraduate
-and master’s degree graduates from the Computer Science, Engineering,
-and IT departments at the following universities:
+
+You are an expert in higher education statistics and labor market trends, specializing in employment outcomes for graduates in technical fields. Your task is to conduct a comprehensive analysis of employment rates for both undergraduate and master’s degree graduates from the Computer Science, IT, and ICT departments at the following universities:
 
 - Chalmers Tekniska Högskola, Sweden
 - University of Gothenburg, Sweden
@@ -30,24 +27,34 @@ and IT departments at the following universities:
 - Riga Technical University (RTU), Latvia
 - University of Tartu (UT), Estonia
 
-Your research should incorporate data from multiple reputable sources,
-including academic publications, official university reports, government
-statistics, and industry surveys. Please also consider Swedish resources
-where applicable, alongside international ones.
+Instructions:
 
-Present your findings in a clear, structured table with the following
-columns:
+1. Data Collection:
+Gather employment rate data from reputable sources, including academic publications, official university reports, government statistics, and industry surveys.
+Prioritize national sources when available, as they may provide more accurate reflections of true employment outcomes.
 
-- University
-- Country
-- Employment Rate
-- Year of Reporting
-- Resource Name
-- Resource Link
+2. Scope and Specificity:
+Determine whether the reported employment rate is specific to the university or reflects a broader area (e.g., city, region, or country).
+Identify whether the employment data is specific to the fields of Computer Science, IT, and ICT or if it covers additional fields.
+Specify the educational level for which the employment rate applies (e.g., undergraduate/bachelor’s, postgraduate/masters, or PhD).
 
-Ensure that every data point is accurately referenced and sourced from
-reliable publications. In addition, provide a concise summary of your
-data collection methodology, and discuss any significant trends or
-insights that emerge from your analysis.
+3. Data Presentation:
+Present your findings in a structured table with the following columns:
+University
+Country
+Employment Rate (as a percentage, a number from 0 to 100)
+Year of Reporting
+Time frame (e.g., directly upon graduation, 6 months after graduation)
+Resource Name
+Resource Classification (e.g., official university report, government statistics, industry survey, etc.)
+Resource Link
+Scope of Employment Rate (e.g., specific to the university, city, municipality, or country)
+Field Specificity (e.g., specific to CS, IT, and ICT, or covers all fields)
+Degree Level (e.g., undergraduate/bachelor’s, postgraduate/masters, or PhD)
+Missing Data:
 
+If any information is unavailable, enter “N/A” in the corresponding cell.
+
+4. Referencing:
+Ensure every data point is accurately referenced and that all sources are reliable.
 Thank you for your rigorous attention to detail and expert analysis.
