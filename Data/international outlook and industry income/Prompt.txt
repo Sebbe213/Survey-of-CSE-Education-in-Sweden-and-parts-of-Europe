@@ -1,0 +1,17 @@
+1. Established Parameters in Technology University Rankings
+1.1 Core Metrics in THE World University Rankings
+The Times Higher Education (THE) World University Rankings evaluate institutions based on five pillars:
+
+Teaching (30%)
+
+Research (30%)
+
+Citations (30%)
+
+International Outlook (7.5%)
+
+Industry Income (2.5%)
+These metrics derive from 13 performance indicators, including research income, publication volume, citation impact, and reputation surveys. Notably, website quality, campus infrastructure, and geographical location are absent from THE’s formal methodology.
+
+i am interested in International Outlook and Industry Income for the universities in csv file. if you can make a search for theses parameters and show all the data i want. 
+
