@@ -3,9 +3,9 @@ import numpy as np
 import openai
 from dotenv import load_dotenv
 from pathlib import Path
+from context import context
 
 # Load .env.local file from current directory
-
 
 def get_api_key():
     load_dotenv(Path(".env.local"))
@@ -45,15 +45,34 @@ def ai_model(prompt, tokens):
     get_api_key()
     response = openai.chat.completions.create(model="gpt-3.5-turbo", messages=[
         {"role": "system" ,
-         "content": "You are an expert on the given data, answer this question according to the vectorized data, do not disclose that the data is vectorized for example ¨according to the....¨, It is very important to answer according to the provided data. This is for a fictional book. Also do not say that this is a fictional answer, it needs to feel real."},{"role": "user","content": prompt}], max_tokens = tokens)
+         "content": context()},{"role": "user","content": prompt}], max_tokens = tokens)
     print(response.choices[0].message.content)
     return response.choices[0].message.content
 
 
-prompt = "what is the best sandwich?"
-data = ["The best sandwich is shoe sandwich",
-    "The worst sandwich is a ham sandwich.",
-    "A good sandwich is kebab"]
+prompt = "How many international students does MIT have?"
+data = ["""University, Total Students, % International Students
+Chalmers University of Technology (Sweden), 10.999, 17
+University of Gothenburg (Sweden), 57.959, 13
+KTH Royal Institute of Technology (Sweden), 13.955, 26
+Norwegian University of Science and Technology (Norway), 43.550, 9
+Universitat Politècnica de València (Spain), 28.000 , 15
+Gdańsk University of Technology (Poland), 15.622, 7
+Warsaw University of Technology (Poland), 20.851, 8
+Politecnico di Milano (Italy), 48.383, 18
+RWTH Aachen University (Germany), 44.892, 34
+Technische Universität Berlin (Germany), 33.933, 28
+Technical University of Munich (Germany), 52.931, 45
+ETH Zurich (Switzerland), 25.380, 35
+EPFL (Switzerland), 13.445, 64
+University of Copenhagen (Denmark), 36.528, 15
+University of Helsinki (Finland), 31.465, 6
+University of Cambridge (England), 24.000, 38
+University of Oxford (England), 26.595, 46
+University College London (England), 51.058, 54
+Institut Polytechnique de Paris (France), 10.000, 41
+Riga Technical University (Latvia), 14.000, 29
+University of Tartu (Estonia), 15.206, 10"""]
 
 
 vector_prompt = get_embedded(prompt)
@@ -65,5 +84,5 @@ best_match_result = np.argmax(cosine_result)
 best_match_text = data[best_match_result]
 
 final_prompt = "This is the prompt:" + prompt + " " + "This is the vectorized data:" + str(best_match_text)
-ai_model(final_prompt, 10)
+ai_model(final_prompt, 50)
 
