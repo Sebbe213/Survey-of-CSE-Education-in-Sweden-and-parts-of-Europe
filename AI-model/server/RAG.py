@@ -1,9 +1,11 @@
 import os
-import numpy as np
 import openai
+import numpy as np
 from dotenv import load_dotenv
 from pathlib import Path
 
+
+load_dotenv(".env.local")
 # Load .env.local file from current directory
 
 
@@ -21,6 +23,12 @@ def get_embedded(data, model="text-embedding-3-small"):
     get_api_key()
     response = openai.embeddings.create(input=[data], model=model)
     return response.data[0].embedding
+
+def embed_texts(texts, model="text-embedding-3-small"):
+    response = openai.embeddings.create(input=texts, model=model)
+    return [item.embedding for item in response.data]
+
+
 
 
 #Add a data parameter
@@ -51,19 +59,25 @@ def ai_model(prompt, tokens):
 
 
 prompt = "what is the best sandwich?"
-data = ["The best sandwich is shoe sandwich",
-    "The worst sandwich is a ham sandwich.",
-    "A good sandwich is kebab"]
+# data = ["The best sandwich is shoe sandwich",
+#     "The worst sandwich is a ham sandwich.",
+#     "A good sandwich is kebab"]
+
+data = ["Chalmers Tekniska Högskola in Sweden offers PG programs in STEM with a 95.3% employment rate.",
+        ]
+
+
 
 
 vector_prompt = get_embedded(prompt)
 vector_data = [get_embedded(text) for text in data]
 
+
 cosine_result = [cosine_similarity(vector_prompt, vector_data_piece) for vector_data_piece in vector_data]
+
 
 best_match_result = np.argmax(cosine_result)
 best_match_text = data[best_match_result]
 
 final_prompt = "This is the prompt:" + prompt + " " + "This is the vectorized data:" + str(best_match_text)
 ai_model(final_prompt, 10)
-
