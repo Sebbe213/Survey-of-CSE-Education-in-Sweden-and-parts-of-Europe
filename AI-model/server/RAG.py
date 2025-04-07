@@ -34,22 +34,33 @@ def get_or_compute_embeddings(data_list):
         save_embeddings_cache(embeddings)
         return embeddings
 
+
+openai.api_key="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"
+
+
 def get_api_key():
     """Loads your OpenAI API key from .env."""
     # Assumes .env is in the same folder or a parent folder
-    load_dotenv(dotenv_path=Path(__file__).parent.parent / ".env.local")
+    #load_dotenv()
 
-    openai.api_key = os.getenv('API_KEY')
+    #openai.api_key = os.getenv('API_KEY')
     return openai.api_key
 
-def get_embedded_batch(data_list, model="text-embedding-3-small"):
-    """
-    Converts a list of text strings into embeddings using OpenAI's API in one batch call.
-    """
+def get_embedded_batch(data_list, model="text-embedding-ada-002", max_length=2000):
+    # Filter out empty strings and truncate each valid string to max_length characters
+    valid_data = [text.strip()[:max_length] for text in data_list if text.strip()]
+    
+    # Debug print to see what you’re sending to the API
+    print("Sample inputs for embeddings:", valid_data[:3])
+    
     get_api_key()
-    response = openai.embeddings.create(input=data_list, model=model)
-    embeddings = [item.embedding for item in response.data]
+    response = openai.Embedding.create(input=valid_data, model=model)
+    embeddings = [item["embedding"] for item in response["data"]]
     return embeddings
+
+
+
+
 
 def cosine_similarity(a, b):
     """
@@ -121,21 +132,9 @@ def answer_query(user_query, combined_data, combined_embeddings):
     return answer
 
 def main():
-    # Get the path to the current file
-    base_dir = Path(__file__).parent
-
-    # Create a list of CSV paths using the data folder
-    csv_file_paths = [
-        base_dir / "data" / "Internaionall outlook and industry income.csv",
-        base_dir / "data" / "awards.csv",
-        base_dir / "data" / "employment_rates.csv",
-        base_dir / "data" / "internatiolan_students.csv",
-        base_dir / "data" / "internatiolan_students-checkpoint.csv",
-        base_dir / "data" / "MVP_universities.csv",
-        base_dir / "data" / "student_barometers_answer.csv",
-        base_dir / "data" / "student_teacher_ratio.csv",
-        base_dir / "data" / "all_CSE_universites_in_europe.csv"
-    ]
+    # Adjust the path: go one level up from server, then into data
+    csv_file_path = Path(__file__).parent.parent / "data" / "test_alla_input_data.csv"
+    csv_file_paths = [csv_file_path]
     
     combined_data = load_all_csv_data(csv_file_paths)
     print("CSV data loaded successfully.")
