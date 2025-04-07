@@ -15,34 +15,13 @@ def get_api_key():
     openai.api_key = os.getenv('API_KEY')
     return openai.api_key
 
-def embed_user_prompt(prompt):
-    get_api_key()
-    response = openai.embeddings.create(input=prompt,model="text-embedding-3-small")
-    return response.data[0].embedding
 
 def get_embedded(data, model="text-embedding-3-small"):
     get_api_key()
     response = openai.embeddings.create(input=[data], model=model)
     return response.data[0].embedding
 
-def embed_texts(texts, model="text-embedding-3-small"):
-    response = openai.embeddings.create(input=texts, model=model)
-    return [item.embedding for item in response.data]
 
-
-
-
-#Add a data parameter
-def embed_data():
-    #chunks = data.split("\n\n")
-    response_list = []
-    get_api_key()
-    response = openai.embeddings.create(input=data,model="text-embedding-3-small")
-    for response_item in range(len(response.data)):
-        to_be_appended = response.data[response_item].embedding
-        response_list.append(to_be_appended)
-    return response_list
-    #return response.data[0].embedding
 
 def cosine_similarity(a,b):
     vec1 = np.array(a)
@@ -136,10 +115,6 @@ Institut Polytechnique de Paris (IP Paris) (Data from École Polytechnique),Fran
 Riga Technical University (RTU),Latvia,88,2019,PG,12,National,All
 University of Tartu (UT),Estonia,87,2019,UG,6,University-specific,All
 University of Tartu (UT),Estonia,94,2019,PG,6,University-specific,All"""]
-
-# data = ["The best sandwich is shoe sandwich",
-#     "The worst sandwich is a ham sandwich.",
-#     "A good sandwich is kebab"]
 
 vector_prompt = get_embedded(prompt)
 #These two codes here that are commented out are what loaded the embedded data. Are important when we need to load the data.
