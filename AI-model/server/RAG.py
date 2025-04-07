@@ -34,32 +34,30 @@ def get_or_compute_embeddings(data_list):
         save_embeddings_cache(embeddings)
         return embeddings
 
-
-openai.api_key="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"
-
-
 def get_api_key():
-    """Loads your OpenAI API key from .env."""
-    # Assumes .env is in the same folder or a parent folder
-    #load_dotenv()
-
-    #openai.api_key = os.getenv('API_KEY')
+    """Loads your OpenAI API key from .env.local."""
+    load_dotenv()
+    openai.api_key = os.getenv('API_KEY')
     return openai.api_key
 
-def get_embedded_batch(data_list, model="text-embedding-ada-002", max_length=2000):
-    # Filter out empty strings and truncate each valid string to max_length characters
-    valid_data = [text.strip()[:max_length] for text in data_list if text.strip()]
-    
-    # Debug print to see what you’re sending to the API
-    print("Sample inputs for embeddings:", valid_data[:3])
-    
-    get_api_key()
-    response = openai.Embedding.create(input=valid_data, model=model)
-    embeddings = [item["embedding"] for item in response["data"]]
+
+def get_embedded_batch(data_list, model="text-embedding-3-small"):
+    get_api_key()  
+    response = openai.Embedding.create(input=data_list, model=model)
+    embeddings = [item.embedding for item in response.data]
     return embeddings
 
-
-
+def ai_model(prompt, tokens=50):
+    get_api_key()
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "..."},
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=tokens
+    )
+    return response.choices[0].message.content
 
 
 def cosine_similarity(a, b):
@@ -72,6 +70,7 @@ def cosine_similarity(a, b):
     norm1 = np.linalg.norm(vec1)
     norm2 = np.linalg.norm(vec2)
     return dot_product / (norm1 * norm2)
+
 
 def ai_model(prompt, tokens=50):
     """
@@ -88,6 +87,7 @@ def ai_model(prompt, tokens=50):
         max_tokens=tokens
     )
     return response.choices[0].message.content
+
 
 def load_csv_data(file_path):
     """
@@ -110,15 +110,17 @@ def load_all_csv_data(csv_file_paths):
     all_data = []
     for file_path in csv_file_paths:
         data = load_csv_data(file_path)
-        labeled_data = [f"[{file_path.stem}] {row}" for row in data]
+        labeled_data = [f"[{Path(file_path).stem}] {row}" for row in data]
         all_data.extend(labeled_data)
     return all_data
+
 
 def answer_query(user_query, combined_data, combined_embeddings):
     """
     Retrieves the most relevant data row for a user query and generates an AI response.
     """
     query_embedding = get_embedded_batch([user_query])[0]
+    
     similarities = [cosine_similarity(query_embedding, emb) for emb in combined_embeddings]
     
     best_match_index = np.argmax(similarities)
@@ -131,10 +133,11 @@ def answer_query(user_query, combined_data, combined_embeddings):
     answer = ai_model(final_prompt, tokens=50)
     return answer
 
+
 def main():
-    # Adjust the path: go one level up from server, then into data
-    csv_file_path = Path(__file__).parent.parent / "data" / "test_alla_input_data.csv"
-    csv_file_paths = [csv_file_path]
+    csv_file_paths = [
+        Path(__file__).parent.parent / "test_alla_input_data.csv"
+    ]
     
     combined_data = load_all_csv_data(csv_file_paths)
     print("CSV data loaded successfully.")
