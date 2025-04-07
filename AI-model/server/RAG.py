@@ -1,3 +1,4 @@
+import json
 import os
 import openai
 import numpy as np
@@ -64,7 +65,7 @@ def ai_model(prompt, tokens):
 
 
 
-prompt = ("Give me some info about GU")
+prompt = "Students in Chalmers"
 data = ["University, Number of students, Percentage of international students"
 "Chalmers University of Technology (Sweden), 10.999, 17"
 "University of Gothenburg (Sweden), 57.959, 13"
@@ -141,10 +142,17 @@ University of Tartu (UT),Estonia,94,2019,PG,6,University-specific,All"""]
 #     "A good sandwich is kebab"]
 
 vector_prompt = get_embedded(prompt)
-vector_data = [get_embedded(text) for text in data]
+#These two codes here that are commented out are what loaded the embedded data. Are important when we need to load the data.
+#if(len(load_list) == 0):
+#vector_data = [get_embedded(text) for text in data]
 
+#with open('embedded_data.json','w') as file:
+    #json.dump(vector_data, file)
+
+with open('embedded_data.json','r') as file:
+    load_list = json.load(file)
 # Compute cosine similarity
-cosine_result = [cosine_similarity(vector_prompt, vector) for vector in vector_data]
+cosine_result = [cosine_similarity(vector_prompt, vector) for vector in load_list]
 
 # Get top 3 matches
 top_n = 2
