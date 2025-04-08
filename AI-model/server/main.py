@@ -42,29 +42,29 @@ def build_prompt(user_question, best_match):
     )
 
 def main():
-    user_input = input("What is your question dear user? \n").strip()
+    user_input = ""
+    while user_input != "quit":
+        user_input = input("What is your question dear user? Write quit to exit the program \n").strip()
 
-    if not user_input:
-        print("No input provided")
-        return
+        if not user_input or user_input == "quit":
+            print("No input provided")
+            break
 
-    print("Embedding your question")
-    query_embedding = embed_text(user_input)
+        query_embedding = embed_text(user_input)
 
-    print("Crunching employment rates just for you ...")
-    data = load_data()
+        print("hmm... good question, let me think!")
+        data = load_data()
 
 
-    print("Finding the best matching rates for you ..")
-    best_match = find_most_similar_entry(query_embedding, data, get_all_data())
+        best_match = find_most_similar_entry(query_embedding, data, get_all_data())
 
-    #print(f"Best match: {best_match["meta"]["University"]} ({best_match["meta"]["Country"]})")
 
-    print("Querying the LM")
-    final_prompt = build_prompt(user_input, best_match)
-    response = generate_answer(final_prompt, tokens=150)
 
-    print(response)
+        print("Querying the LM")
+        final_prompt = build_prompt(user_input, best_match)
+        response = generate_answer(final_prompt, tokens=150)
+
+        print(response)
 
 
 if __name__ == "__main__":
