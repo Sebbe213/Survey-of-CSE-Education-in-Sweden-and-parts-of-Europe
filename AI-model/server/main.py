@@ -2,7 +2,6 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-
 import os
 import json
 import numpy as np
@@ -38,8 +37,7 @@ def build_prompt(user_question, best_match):
         f"The most relevant data found:\n{match_text}\n"
         f"Based on this data, provide a detailed answer."
     )
-    return (final_prompt
-    )
+    return final_prompt
 
 def main():
     user_input = ""
@@ -58,12 +56,9 @@ def main():
 
         best_match = find_most_similar_entry(query_embedding, data, get_all_data())
 
-
-
         print("Querying the LM")
         final_prompt = build_prompt(user_input, best_match)
         response = generate_answer(final_prompt, tokens=150)
-
         print(response)
 
 
