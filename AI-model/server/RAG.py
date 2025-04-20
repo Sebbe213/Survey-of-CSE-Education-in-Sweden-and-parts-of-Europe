@@ -18,8 +18,9 @@ def get_api_key():
 
 def get_embedded(data, model="text-embedding-3-small"):
     get_api_key()
-    response = openai.embeddings.create(input=[data], model=model)
+    response = openai.embedding.create(input=[data], model=model)
     return response.data[0].embedding
+
 
 
 
@@ -144,5 +145,4 @@ final_prompt = (
 
 
 ai_model(final_prompt, 200)
-
 

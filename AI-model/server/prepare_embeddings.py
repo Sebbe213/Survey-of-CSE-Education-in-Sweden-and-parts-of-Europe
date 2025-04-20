@@ -157,5 +157,5 @@ def prepare_embedding():
         json.dump(vector_data, file)
         print("Embedding done!")
 
-
-prepare_embedding()
+if __name__ == "__main__":
+    prepare_embedding()
