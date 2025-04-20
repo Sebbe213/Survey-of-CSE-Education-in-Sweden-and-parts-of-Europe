@@ -1,0 +1,19 @@
+.header{
+   padding-top: 10px;
+}
+
+.nav-list{
+    list-style-type: none;
+    gap: 50px;
+}
+
+.nav-content{
+    width: 100%;
+    padding-top: 10px;
+    display: flex;
+}
+
+.logo-chalmers{
+    width:60px;
+    height: 60px;
+}
