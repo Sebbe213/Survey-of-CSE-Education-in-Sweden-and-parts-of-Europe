@@ -1,4 +1,12 @@
 from flask import Flask, render_template, request
+from dotenv import load_dotenv
+import os
+import openai
+
+# Load environment variables and set API key
+load_dotenv('.env.local')
+openai.api_key = os.getenv('OPENAI_API_KEY') or os.getenv('API_KEY')
+
 from prepare_embeddings import get_all_data
 from openai_embed import embed_text
 from similarity import cosine_similarity
@@ -29,5 +37,3 @@ def index():
 if __name__ == '__main__':
     # For development; in production use a WSGI server
     app.run(host='0.0.0.0', port=5000, debug=True)
-
-
