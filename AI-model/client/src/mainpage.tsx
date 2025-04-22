@@ -1,6 +1,7 @@
 import Header from './header';
 import {useState} from "react";
 import './mainpage.css'
+import arrowIcon from './assets/arrow 1 (1).png';
 
 function Mainpage(){
     const [question,setQuestion] = useState('');
@@ -25,7 +26,7 @@ function Mainpage(){
                 </div>
                 <div className='d-flex justify-content-center '>
                     <input className='input-bar' placeholder='Write your question here!' value={question} onChange={(e) => setQuestion(e.target.value)}/>
-                    <button className='prompt-button' onClick={Promptlist}></button>
+                    <button className='prompt-button' onClick={Promptlist}><img className='arrow' src={arrowIcon} alt='submit answer button'/></button>
                 </div>
             </div>
 
