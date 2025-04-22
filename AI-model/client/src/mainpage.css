@@ -1,0 +1,18 @@
+.input-bar{
+    display: flex;
+    position: fixed;
+    bottom: 10px;
+    border-radius: 10px 10px 10px 10px;
+    width: 50%;
+
+}
+
+.prompt-button{
+    display: flex;
+    position: fixed;
+    bottom: 10px;
+    right: 350px;
+    width: 50px;
+    height: 30px;
+    border-radius: 10px 10px 10px 10px;
+}
