@@ -21,8 +21,7 @@
 }
 
 .list-item:hover{
-
-    box-shadow: 2px 2px 2px #ffffff;
+    text-decoration: underline blueviolet;
 }
 
 .logo-chalmers{
