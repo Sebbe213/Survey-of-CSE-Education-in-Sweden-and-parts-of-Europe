@@ -4,7 +4,7 @@ from context import context
 def generate_answer(prompt, tokens=50):
     system_prompt = context()
 
-    response = openai.ChatCompletion.create(
+    response = openai.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[
         {"role": "system", "content": context()},

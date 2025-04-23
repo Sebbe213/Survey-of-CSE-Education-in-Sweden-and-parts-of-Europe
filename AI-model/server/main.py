@@ -16,10 +16,10 @@ import openai
 openai.api_key = os.getenv("API_KEY")
 
 def load_data():
-    with open('embedded_data.json', "r") as file:
-        result_list = json.load(file)
-        return result_list
-
+    # __file__ is .../AI-model/server/main.py
+    data_path = Path(__file__).resolve().parent / "embedded_data.json"
+    with open(data_path, "r") as f:
+        return json.load(f)
 
 def find_most_similar_entry(query_embedding, all_embeddings, original_data):
     similarities = [
