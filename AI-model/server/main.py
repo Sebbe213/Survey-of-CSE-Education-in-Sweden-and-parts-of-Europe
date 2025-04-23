@@ -25,7 +25,7 @@ def find_most_similar_entry(query_embedding, all_embeddings, original_data):
     similarities = [
         cosine_similarity(query_embedding, item) for item in all_embeddings
     ]
-    top_n = 2
+    top_n = 3
     sorted_indices = np.argsort(similarities)[::-1][:top_n]
     top_matches = [original_data[i] for i in sorted_indices]
     return top_matches
@@ -58,7 +58,7 @@ def main():
 
         print("Querying the LM")
         final_prompt = build_prompt(user_input, best_match)
-        response = generate_answer(final_prompt, tokens=150)
+        response = generate_answer(final_prompt, tokens=400)
         print(response)
 
 
