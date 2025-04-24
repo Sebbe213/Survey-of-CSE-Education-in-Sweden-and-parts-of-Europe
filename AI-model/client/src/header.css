@@ -1,31 +1,51 @@
-.header{
-    position: sticky;
-    padding-top: 10px;
-    align-items: center;
-    border-style: solid;
-    border-width: thin;
-    border-bottom-color: gray;
 
-}
-
-.nav-list{
-    list-style-type: none;
-    gap: 50px;
-}
-
-.nav-content{
+/* Make the header bar a fixed-height container and stick it to the top */
+.header {
+    position: sticky;     /* or fixed if you want it always on-screen */
+    top: 0;
     width: 100%;
-    padding-top: 10px;
-    display: flex;
-
-}
-
-.list-item:hover{
-    text-decoration: underline blueviolet;
-}
-
-.logo-chalmers{
-    width:60px;
+    height: 80px;         /* choose whatever makes sense */
+    background-color: #222;/* match your dark theme */
+    border-bottom: 1px solid gray;
+    z-index: 10;          /* above other content */
+  }
+  
+  /* Center the logo horizontally & vertically within .header */
+  .logo-chalmers {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     height: 60px;
-}
-
+    width: auto;
+  }
+  
+  /* Position the nav container at the top-right, centered vertically */
+  .nav-content {
+    position: absolute;
+    top: 50%;
+    right: 20px;    /* distance from the right edge */
+    transform: translateY(-50%);
+  }
+  
+  /* Lay out list items in a row with gaps */
+  .nav-list {
+    display: flex;
+    gap: 24px;      /* space between “Home”, “Data”, “About us” */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  /* Optional hover styling */
+  .nav-list li:hover a {
+    text-decoration: underline blueviolet;
+  }
+  
+  /* Link styling */
+  .nav-list a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
