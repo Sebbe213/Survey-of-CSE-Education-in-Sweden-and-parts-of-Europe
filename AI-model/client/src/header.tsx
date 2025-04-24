@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import './header.css'
-import logo from './assets/chalmers-university-of-technology-logo-png_seeklogo-28934.png'
+import logo from './assets/chalmers-logo.png'
 
 function Header(){
     return(
