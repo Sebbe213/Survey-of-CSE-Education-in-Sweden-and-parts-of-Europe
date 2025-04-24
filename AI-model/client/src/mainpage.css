@@ -44,3 +44,11 @@ body {
 .answer{
     padding-top: 10%;
 }
+
+.reset-button{
+    position: fixed;
+    top: 95%;
+    left: 1%;
+    background-color: blueviolet;
+    color: white;
+}
