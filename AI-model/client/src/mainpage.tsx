@@ -39,7 +39,7 @@ export default function Mainpage() {
       const answer = await ask(question);
       setConversations((prev) => [
         ...prev,
-        { question: question.trim(), answer }
+        {question: question.trim(), answer}
       ]);
       setQuestion('');
     } catch (err: any) {
@@ -51,50 +51,57 @@ export default function Mainpage() {
 
   const handleReset = () => {
     setConversations([]);
+    console.log("I am pressed!");
     localStorage.removeItem('conversations');
   };
 
+  function HandleKeyPress(event: React.KeyboardEvent) {
+    if (event.key === 'Enter') {
+      handleAsk();
+    }
+  }
+
   return (
-    <div>
-      <Header />
+      <div>
+        <Header/>
+        <div className="answer-area">
+          <ul className="answer-list">
+            {conversations.map((item, idx) => (
+                <li key={idx}>
+                  <QuestionModal question={item.question}/>
+                  <p>Answer: {item.answer}</p>
+                  <hr/>
+                </li>
+            ))}
+          </ul>
+        </div>
 
-      <div className="answer-area">
-        <ul className="answer-list">
-          {conversations.map((item, idx) => (
-            <li key={idx}>
-              <QuestionModal question={item.question} />
-              <p>Answer: {item.answer}</p>
-              <hr />
-            </li>
-          ))}
-        </ul>
+        {error && <div className="error-message">{error}</div>}
+
+        <div className="input-area">
+          <input
+              className="input-bar"
+              placeholder="Write your question here!"
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+              onKeyDown={HandleKeyPress}
+              disabled={loading}
+          />
+          <button
+              className="prompt-button"
+              onClick={handleAsk}
+              disabled={loading || !question.trim()}
+          >
+            <img className="arrow" src={arrowIcon} alt="Submit"/>
+          </button>
+          <button
+              className="reset-button"
+              onClick={handleReset}
+              disabled={loading && conversations.length === 0}
+          >
+            Reset
+          </button>
+        </div>
       </div>
-
-      {error && <div className="error-message">{error}</div>}
-
-      <div className="input-area">
-        <input
-          className="input-bar"
-          placeholder="Write your question here!"
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-          disabled={loading}
-        />
-        <button
-          className="prompt-button"
-          onClick={handleAsk}
-          disabled={loading || !question.trim()}
-        >
-          <img className="arrow" src={arrowIcon} alt="Submit" />
-        </button>
-        <button
-          className="reset-button"
-          onClick={handleReset}
-          disabled={loading && conversations.length === 0}
-        >
-          Reset
-        </button>
-      </div>
-    </div>
   );
 }
