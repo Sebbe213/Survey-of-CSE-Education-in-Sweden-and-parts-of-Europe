@@ -1,0 +1,14 @@
+.questionmodal{
+    display: flex;
+    background-color: blueviolet;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 2px 2px 5px gray;
+    width: fit-content;
+    height: fit-content;
+    font-size: small;
+    padding: 5%;
+}
+
+.question{
+
+}

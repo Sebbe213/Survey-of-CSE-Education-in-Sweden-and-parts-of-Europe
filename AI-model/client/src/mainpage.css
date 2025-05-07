@@ -1,0 +1,83 @@
+
+
+/* Page background and text color */
+body {
+    background-color: #222222;
+    margin: 0;
+    padding: 0;
+    color: white;
+  }
+  
+  /* Container for all Q&A items; add bottom padding so they scroll clear of the input bar */
+  .answer-area {
+    padding: 2rem 1rem 6rem; /* top/right/left padding + extra bottom padding */
+    width: 100%;
+  }
+  
+  /* Space out each Q&A block so they never overlap */
+  .answer-list li {
+    margin-bottom: 2rem;
+  }
+  
+  /* Fixed‐at‐bottom row holding the input, send button, and reset button */
+  .input-area {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    width: calc(100% - 40px);
+    max-width: 800px;
+  }
+  
+  /* The text input grows to fill available space */
+  .input-bar {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+  }
+  
+  /* The circular “send” button (arrow) */
+  .prompt-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    margin-right: 0.5rem;
+  }
+  
+  /* Make the arrow image scale nicely inside the button */
+  .arrow {
+    width: 60%;
+    height: auto;
+  }
+  
+  /* The “Reset” button sits next to the send button */
+  .reset-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  /* Optional: style any error messages */
+  .error-message {
+    color: tomato;
+    text-align: center;
+    margin: 1rem 0;
+  }
+  
