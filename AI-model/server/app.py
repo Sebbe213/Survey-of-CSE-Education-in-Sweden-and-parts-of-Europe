@@ -33,7 +33,7 @@ def index():
             query_emb = embed_text(user_input)
             best_texts = find_most_similar_entry(query_emb, data_embeddings, original_texts)
             prompt     = build_prompt(user_input, best_texts)
-            answer     = generate_answer(prompt, tokens=150)
+            answer     = generate_answer(prompt, tokens=400)
     return render_template('index.html', answer=answer)
 
 # ---- JSON API endpoint ----
@@ -48,7 +48,7 @@ def api_ask():
     query_emb   = embed_text(question)
     best_texts  = find_most_similar_entry(query_emb, data_embeddings, original_texts)
     prompt      = build_prompt(question, best_texts)
-    answer_text = generate_answer(prompt, tokens=150)
+    answer_text = generate_answer(prompt, tokens=400)
 
     return jsonify({ 'answer': answer_text })
 

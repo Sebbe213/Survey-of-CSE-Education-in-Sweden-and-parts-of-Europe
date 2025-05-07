@@ -5,7 +5,7 @@ def generate_answer(prompt, tokens=50):
     system_prompt = context()
 
     response = openai.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4o-mini",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": prompt}
