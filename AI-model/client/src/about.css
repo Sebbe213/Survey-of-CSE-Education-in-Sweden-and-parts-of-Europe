@@ -1,15 +1,35 @@
 /* src/about.css */
 .about-page {
-    padding: 2rem;
-    max-width: 800px;
-    margin: auto;
     color: #eee;
+    text-align: center;
+    padding: 2rem 1rem;
+    max-width: 1000px;
+    margin: auto;
   }
-  .about-page h1 {
-    margin-bottom: 1rem;
-    font-size: 2rem;
+  .student-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-top: 2rem;
   }
-  .about-page p {
-    line-height: 1.6;
+  .student-card {
+    max-width: 180px;
+    text-align: center;
+  }
+  .student-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .student-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+  }
+  .student-desc {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-top: 0.25rem;
   }
   
