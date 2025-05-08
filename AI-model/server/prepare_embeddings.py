@@ -904,8 +904,7 @@ based or environmental factors. These findings underscore the need to re-evaluat
 educational assessment models that heavily weight research and prestige, potentially at
 the expense of direct student learning outcomes.""",
 
-"""Comparison of Global University Rankings and Student-
-Centered Ranking
+"""Comparison of Global University Rankings and Student-Centered Ranking
 To enable a consistent comparison across the major global university rankings, each
 university’s position in the ARWU, THE and QS ranking systems was retrieved. Because
 the original rankings span different ranges and criteria, we re-ranked the 21 universities
@@ -986,7 +985,7 @@ Rank,University,World Ranking (QS)
 20,Riga Technical University,451–500
 21,University of Gothenburg,501–550
 """,
-"""Bachelor ranking based on a student centric model: 
+"""Ranking created by the writers (bachelor students) based on a student centric model: 
 Name of University,Student Ranking,Average Rank Change in comparison with traditional ranking
 University of Oxford,1,1,+0
 University of Cambridge,2,2,+0
@@ -1027,8 +1026,10 @@ and Gd´ansk University of Technology remained at the bottom. Nine universities 
 in ranking in the student-centered ranking compared to their average global ranking. The
 largest declines were observed for UCL (-11), Technical University of Munich (-9), KTH
 (-8), RWTH Aachen (-8) and Technische Universit¨at Berlin (-8).
-""","""
+""",
+"""
 Discussion:
+
 The results of this study highlight a clear disconnect between what students value in their
 educational experience and what current university ranking systems prioritize.
 The student survey results indicated that the most important parameters for students
@@ -1051,9 +1052,7 @@ systems. Meanwhile, parameters that student rated as less important, such as res
 citations and academic reputation, dominate these ranking methodologies. These findings
 confirm previous observations that university rankings are primarily designed to measure
 research excellence rather than educational quality.
-This comparison highlights a clear gap between what students consider important for ed-
-27
-ucational quality and what global university rankings prioritize. While there is some
+This comparison highlights a clear gap between what students consider important for educational quality and what global university rankings prioritize. While there is some
 partial alignment (e.g., QS’s inclusion of employability metrics see figure 3), many
 student-valued aspects are underrepresented in current ranking frameworks.
 For Chalmers and GU to achieve their strategic aim of becoming ”top educators” in Swe-
@@ -1082,7 +1081,10 @@ rankings are modest.
 The student-centered ranking model also offers a framework for ongoing strategic evalu-
 ation. By updating the model with student input, Chalmers and GU can continuously
 monitor how well their educational offerings align with evolving student expectations,
-ensuring sustained leadership in CSE education in Sweden and Europe.
+ensuring sustained leadership in CSE education in Sweden and Europe. """,
+
+"""
+Our-developed-tool to support strategic decision-making:
 The AI-assisted tool developed as part of this study serves as a practical mechanism
 to support strategic decision-making aligned with student priorities. By enabling dy-
 namic exploration of student-centered educational data, it allows faculty, administrators,
@@ -1105,7 +1107,10 @@ educational priorities and institutional strategies evolve. Thus, while the AI-a
 represents an important step toward data-driven, student-centered strategic development,
 it should be viewed as a complementary support system rather than a definitive evalua-
 tor. Continuous refinement, critical oversight, and integration with broader institutional
-decision-making processes are essential to fully realize its potential impact.""","""Limitations
+decision-making processes are essential to fully realize its potential impact.""",
+
+"""Limitations:
+
 The survey provided a wealth of data regarding student priorities, but encountered several
 limitations. The forced ranking method over simplified decision-making, while minimal
 response rate to our open-ended question significantly limited our ability to gather qual-
@@ -1138,8 +1143,9 @@ rics for key qualitative aspects required us to use proxy indicators. Finally, w
 narrow the scope of our analysis, such as deciding whether to include only Computer
 Science programs, or broader categories like Computer Science and Engineering (CSE),
 which further constrained our comparisons.
-29
-6.2 Future Work
+
+
+Future Work: 
 This thesis highlighted several limitations and areas where further research could add
 valuable insights. One major challenge was obtaining relevant data, especially from the
 student surveys. The available datasets were often limited in scope or lacked the depth
@@ -1191,7 +1197,8 @@ Overall, the project promotes societal benefit by encouraging a more student-cen
 perspective on educational quality. Ethical risks, such as bias amplification and data
 handling limitations, have been minimized through careful methodology design, trans-
 parency, and responsible use of AI technologies.""" ,
-"""Conclusions
+
+"""Conclusions:
 The findings of our study reveal that there exists a significant gap between the priorities
 of students and those of current ranking institutions. More often than not, traditional
 ranking metrics are an inversion of student priorities. It was clearly observed that univer-sities consistently maintain comprehensive data on metrics utilized by traditional ranking
