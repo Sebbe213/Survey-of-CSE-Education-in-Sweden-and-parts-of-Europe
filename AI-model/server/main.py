@@ -30,11 +30,12 @@ def find_most_similar_entry(query_embedding, all_embeddings, original_data):
     top_matches = [original_data[i] for i in sorted_indices]
     return top_matches
 
-def build_prompt(user_question, best_match):
+def build_prompt(user_question,search_results, best_match):
     match_text = "\n".join([f"- {text}" for text in best_match])
     final_prompt = (
         f"The user asked: '{user_question}'\n"
         f"The most relevant data found:\n{match_text}\n"
+        f"The data sourced from the internet:\n{search_results}\n"
         f"Based on this data, provide a detailed answer."
     )
     return final_prompt
