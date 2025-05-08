@@ -882,8 +882,8 @@ tional ranking systems, and the resulting shifts in university rankings when app
 student-centered evaluation.
 5.1 Student-Preferred Educational Quality Indicators
 To better understand what students themselves consider important when evaluating the
-quality of education, a survey (n = 108) was conducted, asking students to rate various
-parameters on a scale from 1 (least important) to 8 (most important).""","""According to the result of the survey, the most highly valued parameters were Teaching
+quality of education, a survey at Chalmers (n = 108) was conducted, asking students to rate various
+parameters on a scale from 1 (least important) to 8 (most important).According to the result of the survey, the most highly valued parameters were Teaching
 Quality (mean = 6.79), Employability (mean = 6.67) and Curriculum (mean = 6.35).
 These were followed closely by University reputation (mean = 5.75) and Support Services
 (mean = 4.73) and Campus Facilities (mean = 5.60). By contrast, parameters such as

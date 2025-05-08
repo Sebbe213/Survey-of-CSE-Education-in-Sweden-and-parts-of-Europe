@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Mainpage from './mainpage.tsx'
 import About from './about.tsx';
 
+//main-react-component
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
    <BrowserRouter>

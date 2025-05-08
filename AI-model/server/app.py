@@ -3,6 +3,7 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 import os
 import openai
+from internet_search import search
 
 # Load environment variables and set API key
 load_dotenv('.env.local')
@@ -31,9 +32,10 @@ def index():
         if user_input:
             # Embed, retrieve, build prompt, and call the model
             query_emb = embed_text(user_input)
+            search_result = search(user_input)
             best_texts = find_most_similar_entry(query_emb, data_embeddings, original_texts)
-            prompt     = build_prompt(user_input, best_texts)
-            answer     = generate_answer(prompt, tokens=400)
+            prompt     = build_prompt(user_input, search_result, best_texts)
+            answer     = generate_answer(prompt, tokens=500)
     return render_template('index.html', answer=answer)
 
 # ---- JSON API endpoint ----
@@ -46,9 +48,10 @@ def api_ask():
 
     # Embed, retrieve, build prompt, and query the model
     query_emb   = embed_text(question)
+    search_result = search(question)
     best_texts  = find_most_similar_entry(query_emb, data_embeddings, original_texts)
-    prompt      = build_prompt(question, best_texts)
-    answer_text = generate_answer(prompt, tokens=400)
+    prompt      = build_prompt(question,search_result, best_texts)
+    answer_text = generate_answer(prompt, tokens=500)
 
     return jsonify({ 'answer': answer_text })
 
