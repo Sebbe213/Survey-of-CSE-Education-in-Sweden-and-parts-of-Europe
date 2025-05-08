@@ -1,18 +1,43 @@
 {
   "index.html": {
-    "file": "index-BQF67dfC.js",
+    "file": "index-y8jkupMa.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
     "css": [
-      "index-DEuPkhah.css"
+      "index-EmSGFyuz.css"
     ],
     "assets": [
-      "chalmers-logo-CT350pND.png"
+      "chalmers-logo-CT350pND.png",
+      "leo-Dq3Acj5t.jpg"
     ]
   },
   "src/assets/chalmers-logo.png": {
     "file": "chalmers-logo-CT350pND.png",
     "src": "src/assets/chalmers-logo.png"
+  },
+  "src/assets/diana.jpg": {
+    "file": "leo-Dq3Acj5t.jpg",
+    "src": "src/assets/leo.jpg"
+  },
+  "src/assets/felix.jpg": {
+    "file": "leo-Dq3Acj5t.jpg",
+    "src": "src/assets/leo.jpg"
+  },
+  "src/assets/ibrahim.jpg": {
+    "file": "leo-Dq3Acj5t.jpg",
+    "src": "src/assets/leo.jpg"
+  },
+  "src/assets/leo.jpg": {
+    "file": "leo-Dq3Acj5t.jpg",
+    "src": "src/assets/leo.jpg"
+  },
+  "src/assets/radwan.jpg": {
+    "file": "leo-Dq3Acj5t.jpg",
+    "src": "src/assets/leo.jpg"
+  },
+  "src/assets/sebbe.jpg": {
+    "file": "leo-Dq3Acj5t.jpg",
+    "src": "src/assets/leo.jpg"
   }
 }
