@@ -1,0 +1,15 @@
+/* src/about.css */
+.about-page {
+    padding: 2rem;
+    max-width: 800px;
+    margin: auto;
+    color: #eee;
+  }
+  .about-page h1 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+  .about-page p {
+    line-height: 1.6;
+  }
+  

@@ -1,5 +1,5 @@
 // src/mainpage.tsx
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Header from './header';
 import QuestionModal from './question';
 import { ask } from './api';
@@ -16,8 +16,9 @@ export default function Mainpage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [conversations, setConversations] = useState<QA[]>([]);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
-  // Load from localStorage once
+  // Load stored conversations on mount
   useEffect(() => {
     const stored = localStorage.getItem('conversations');
     if (stored) {
@@ -25,22 +26,19 @@ export default function Mainpage() {
     }
   }, []);
 
-  // Persist list whenever it changes
+  // Persist and scroll into view when list changes
   useEffect(() => {
     localStorage.setItem('conversations', JSON.stringify(conversations));
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [conversations]);
 
   const handleAsk = async () => {
     if (!question.trim()) return;
     setLoading(true);
     setError(null);
-
     try {
       const answer = await ask(question);
-      setConversations((prev) => [
-        ...prev,
-        {question: question.trim(), answer}
-      ]);
+      setConversations(prev => [...prev, { question: question.trim(), answer }]);
       setQuestion('');
     } catch (err: any) {
       setError(err.message || 'Something went wrong');
@@ -51,57 +49,54 @@ export default function Mainpage() {
 
   const handleReset = () => {
     setConversations([]);
-    console.log("I am pressed!");
     localStorage.removeItem('conversations');
   };
 
-  function HandleKeyPress(event: React.KeyboardEvent) {
+  const handleKeyPress = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter') {
       handleAsk();
     }
-  }
+  };
 
   return (
-      <div>
-        <Header/>
-        <div className="answer-area">
-          <ul className="answer-list">
-            {conversations.map((item, idx) => (
-                <li key={idx}>
-                  <QuestionModal question={item.question}/>
-                  <p>Answer: {item.answer}</p>
-                  <hr/>
-                </li>
-            ))}
-          </ul>
-        </div>
-
-        {error && <div className="error-message">{error}</div>}
-
-        <div className="input-area">
-          <input
-              className="input-bar"
-              placeholder="Write your question here!"
-              value={question}
-              onChange={(e) => setQuestion(e.target.value)}
-              onKeyDown={HandleKeyPress}
-              disabled={loading}
-          />
-          <button
-              className="prompt-button"
-              onClick={handleAsk}
-              disabled={loading || !question.trim()}
-          >
-            <img className="arrow" src={arrowIcon} alt="Submit"/>
-          </button>
-          <button
-              className="reset-button"
-              onClick={handleReset}
-              disabled={loading && conversations.length === 0}
-          >
-            Reset
-          </button>
-        </div>
+    <div>
+      <Header />
+      <div className="answer-area">
+        <ul className="answer-list">
+          {conversations.map((item, idx) => (
+            <li key={idx}>
+              <QuestionModal question={item.question} />
+              <p>Answer: {item.answer}</p>
+              <hr />
+            </li>
+          ))}
+        </ul>
+        {/* Dummy div to scroll into view */}
+        <div ref={bottomRef} />
       </div>
+
+      {error && <div className="error-message">{error}</div>}
+
+      <div className="input-area">
+        <input
+          className="input-bar"
+          placeholder="Write your question here!"
+          value={question}
+          onChange={e => setQuestion(e.target.value)}
+          onKeyDown={handleKeyPress}
+          disabled={loading}
+        />
+        <button
+          className="prompt-button"
+          onClick={handleAsk}
+          disabled={loading || !question.trim()}
+        >
+          <img className="arrow" src={arrowIcon} alt="Submit" />
+        </button>
+        <button className="reset-button" onClick={handleReset}>
+          Reset
+        </button>
+      </div>
+    </div>
   );
 }
