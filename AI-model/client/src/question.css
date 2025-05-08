@@ -1,8 +1,8 @@
 .questionmodal{
     display: flex;
-    background-color: blueviolet;
-    border-radius: 10px 10px 10px 10px;
-    box-shadow: 2px 2px 5px gray;
+    background-color: #26D4CB;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 1px 1px 2.5px gray;
     width: fit-content;
     height: fit-content;
     font-size: small;
