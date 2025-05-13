@@ -19,3 +19,4 @@ npm-debug.log*
 # in .gitignore
 embedded_data.json
 
+server/__pycache__
