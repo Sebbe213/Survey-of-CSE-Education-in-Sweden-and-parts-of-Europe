@@ -1,4 +1,11 @@
 
+.answer-markdown {
+  margin-bottom: 1.5rem;
+  color: #eee;
+}
+.answer-markdown li {
+  margin-left: 1.5rem;
+}
 
 /* Page background and text color */
 body {

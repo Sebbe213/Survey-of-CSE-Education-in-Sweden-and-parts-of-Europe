@@ -3,6 +3,8 @@ import { useEffect, useState, useRef } from 'react';
 import Header from './header';
 import QuestionModal from './question';
 import { ask } from './api';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import './mainpage.css';
 import arrowIcon from './assets/arrow 1 (1).png';
 
@@ -21,9 +23,7 @@ export default function Mainpage() {
   // Load stored conversations on mount
   useEffect(() => {
     const stored = localStorage.getItem('conversations');
-    if (stored) {
-      setConversations(JSON.parse(stored));
-    }
+    if (stored) setConversations(JSON.parse(stored));
   }, []);
 
   // Persist and scroll into view when list changes
@@ -52,10 +52,8 @@ export default function Mainpage() {
     localStorage.removeItem('conversations');
   };
 
-  const handleKeyPress = (event: React.KeyboardEvent) => {
-    if (event.key === 'Enter') {
-      handleAsk();
-    }
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') handleAsk();
   };
 
   return (
@@ -66,12 +64,16 @@ export default function Mainpage() {
           {conversations.map((item, idx) => (
             <li key={idx}>
               <QuestionModal question={item.question} />
-              <p>Answer: {item.answer}</p>
+              <div className="answer-markdown">
+                <strong>Answer:</strong>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {item.answer}
+                </ReactMarkdown>
+              </div>
               <hr />
             </li>
           ))}
         </ul>
-        {/* Dummy div to scroll into view */}
         <div ref={bottomRef} />
       </div>
 
@@ -91,9 +93,9 @@ export default function Mainpage() {
           onClick={handleAsk}
           disabled={loading || !question.trim()}
         >
-          <img className="arrow" src={arrowIcon} alt="Submit" />
+          {loading ? '…' : <img className="arrow" src={arrowIcon} alt="Submit" />}
         </button>
-        <button className="reset-button" onClick={handleReset}>
+        <button className="reset-button" onClick={handleReset} disabled={loading && !conversations.length}>
           Reset
         </button>
       </div>
