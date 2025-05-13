@@ -15,9 +15,9 @@ def search(query):
             for data in results:
                 text += " " + str(data)
             return results
-    except():
+    except Exception as e:
         query = "Nothing found on the internet!"
-        print("Error has happened")
+        print("Error has happened",e)
         return query
 
 
