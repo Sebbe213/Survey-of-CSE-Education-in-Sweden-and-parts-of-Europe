@@ -54,15 +54,15 @@ def index():
             raw_answer = generate_answer(prompt, tokens=1000)
 
             # Replace placeholder [URL] with clickable DuckDuckGo search link
-            if '[URL]' in raw_answer:
-                query_enc = urllib.parse.quote_plus(user_input)
-                link = f"https://duckduckgo.com/?q={query_enc}"
+            #if '[URL]' in raw_answer:
+                #query_enc = urllib.parse.quote_plus(user_input)
+                #link = f"https://duckduckgo.com/?q={query_enc}"
                 # wrap the URL as hyperlink visible
-                answer = raw_answer.replace(
-                    '[URL]', f"<a href=\"{link}\" target=\"_blank\">{link}</a>"
-                )
-            else:
-                answer = raw_answer
+                #answer = raw_answer.replace(
+                    #'[URL]', f"<a href=\"{link}\" target=\"_blank\">{link}</a>"
+                #)
+            #else:
+                #answer = raw_answer
 
     return render_template('index.html', answer=answer)
 
@@ -92,14 +92,14 @@ def api_ask():
 
     raw_answer = generate_answer(prompt, tokens=1000)
     # For JSON, include the link directly if needed
-    if '[URL]' in raw_answer:
-        query_enc = urllib.parse.quote_plus(question)
-        link = f"https://duckduckgo.com/?q={query_enc}"
-        answer_text = raw_answer.replace('[URL]', link)
-    else:
-        answer_text = raw_answer
+    #if '[URL]' in raw_answer:
+       # query_enc = urllib.parse.quote_plus(question)
+        #link = f"https://duckduckgo.com/?q={query_enc}"
+        #answer_text = raw_answer.replace('[URL]', link)
+   # else:
+        #answer_text = raw_answer
 
-    return jsonify({'answer': answer_text})
+    return jsonify({'answer': raw_answer})
 
 if __name__ == '__main__':
     # For development; in production use a proper WSGI server
