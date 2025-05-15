@@ -130,7 +130,11 @@ University College London (UCL),80%,N/A,N/A,N/A,N/A
 Institut Polytechnique de Paris (France),N/A,N/A,N/A,N/A,N/A
 Riga Technical Univ. (Latvia),N/A,N/A,N/A,N/A,N/A
 Univ. of Tartu (Estonia),90%,95%,N/A,98%,63%
-""","""University,Country,Student-to-Teacher Ratio
+""",
+
+"""
+Important information, how to interpret the student-to-teacher ratio: Higher value means more students per teacher, lower means less students per teacher. 
+University,Country,Student-to-Teacher Ratio
 Chalmers University of Technology,Sweden,11.1
 University of Gothenburg,Sweden,11.5
 KTH Royal Institute of Technology,Sweden,15.6
