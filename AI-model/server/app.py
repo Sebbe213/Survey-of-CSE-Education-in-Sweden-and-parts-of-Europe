@@ -53,8 +53,7 @@ def api_ask():
     best_texts  = find_most_similar_entry(query_emb, data_embeddings, original_texts)
     prompt      = build_prompt(question,search_result, best_texts)
     answer_text = generate_answer(prompt, tokens=1000)
-
-
+    print(prompt)
     return jsonify({ 'answer': answer_text })
 
 if __name__ == '__main__':

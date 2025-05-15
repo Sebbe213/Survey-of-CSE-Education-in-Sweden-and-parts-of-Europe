@@ -33,9 +33,9 @@ def find_most_similar_entry(query_embedding, all_embeddings, original_data):
 def build_prompt(user_question,search_results, best_match):
     match_text = "\n".join([f"- {text}" for text in best_match])
     final_prompt = (
-        f"The user asked: '{user_question}'\n"
+        f"The user asked: '{user_question}  Include source if data was taken from internet otherwise not!'\n"
         f"The most relevant data found:\n{match_text}\n"
-        f"The data sourced from the internet:\n{search_results}\n"
+        f"Results from the internet:\n{search_results}\n"
         f"Based on this data, provide a detailed answer."
     )
     return final_prompt
