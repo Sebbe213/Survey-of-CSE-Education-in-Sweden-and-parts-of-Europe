@@ -9,7 +9,7 @@ from openai_embed import embed_text
 
 def get_all_data():
 
-    data = [""" A table about the number of students and percentage of international students in various universities:
+    data = ["""the number of students and percentage of international students in various universities:
     University, Number of students, Percentage of international students"
 "Chalmers University of Technology (Sweden), 10.999, 17"
 "University of Gothenburg (Sweden), 57.959, 13"
@@ -32,7 +32,7 @@ def get_all_data():
 "Institut Polytechnique de Paris (France), 10.000, 41"
 "Riga Technical University (Latvia), 14.000, 29"
 "University of Tartu (Estonia), 15.206, 10""",
-""" Table about prizes different universities have won:
+""" prizes different universities have won:
 University,Country,Nobel Prizes,Turing Awards,Fields Medals,José Vasconcelos World Award of Education
 Chalmers University of Technology,Sweden,0,0,0,1
 University of Gothenburg,Sweden,1,0,0,0
@@ -55,7 +55,7 @@ University College London (UCL),England,6,0,1,0
 Institut Polytechnique de Paris (IP Paris),France,3,0,0,0
 Riga Technical University (RTU),Latvia,0,0,0,0
 University of Tartu (UT),Estonia,0,0,0,0""",
-""" Table with employment rates of different universities:
+"""employment(employability) rates of different universities:
 University,Country,Employment Rate (%),Year of Reporting,"Degree Level (UG,PG,PhD)",Time Frame (Months),Scope of Employment Rate,Field Specificity
 Chalmers Tekniska Högskola,Sweden,95.3,2024,PG,36,University-specific,STEM
 University of Gothenburg,Sweden,79,2024,PG,18,University-specific,STM
@@ -82,7 +82,7 @@ Institut Polytechnique de Paris (IP Paris) (Data from École Polytechnique),Fran
 Riga Technical University (RTU),Latvia,88,2019,PG,12,National,All
 University of Tartu (UT),Estonia,87,2019,UG,6,University-specific,All
 University of Tartu (UT),Estonia,94,2019,PG,6,University-specific,All""",
-""" Table with International Outlook and Industry Income of different universities:
+""" International Outlook and Industry Income of different universities:
 University Name,International Outlook,Industry Income,Source
 Chalmers University of Technology (Sweden),77.4,66.0,THE World University Rankings 2023
 University of Gothenburg (Sweden),64.4,77.3,THE World University Rankings 2025
@@ -106,7 +106,7 @@ Institut Polytechnique de Paris (France),97.0,98.3,THE World University Rankings
 Riga Technical University (Latvia),N/A,N/A,Not listed in latest THE rankings
 University of Tartu (Estonia),N/A,N/A,Not listed in latest THE rankings
 """,
-""" Table with student survey/barometer results of different universities:
+""" student survey/barometer results of different universities:
     N/A means the university does not have or want to share that data.
 University,Overall Satisfaction,Teaching Quality,Campus Facilities,Support Services,Social Experience
 Chalmers Univ. of Technology,90%,90%,85-90%,90%,85%
