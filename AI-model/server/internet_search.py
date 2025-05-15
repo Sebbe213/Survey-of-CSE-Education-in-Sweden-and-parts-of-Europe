@@ -1,30 +1,45 @@
-from warnings import catch_warnings
-
 from duckduckgo_search import DDGS
-from lxml.html import find_rel_links
+import time
 
+def search(query: str) -> str:
+    """
+    Perform an internet search fallback using DuckDuckGo. Returns a plain text blob of search results
+    or a message indicating nothing was found.
+    """
+    # Guard against too-long queries
+    if len(query) > 500:
+        return "Nothing found on the internet!"
 
-def search(query):
-    text = ""
     ddgs = DDGS()
+    snippets = []
     try:
-        if(len(query) > 500):
-            query = "Nothing found on the internet!"
-            return query
+        # Retry logic for transient errors or rate limits
+        for attempt in range(3):
+            try:
+                results = ddgs.text(query, max_results=2)
+                break
+            except Exception as e:
+                print(f"Search attempt {attempt+1} failed: {e}")
+                time.sleep(1)
         else:
-            results = ddgs.text(query, max_results=2)
-            final_results = []
-            for data in results:
-                title = data.get("title")
-                body = data.get("body")
-                link = data.get("href")
+            # All retries failed
+            return "Nothing found on the internet!"
 
-                text +=  f" Title: {title}" + " "+ f" Source (important to include if chosen): {link}\n" + " "+ f" Content: {body}\n"
-                final_results.append(text)
-            return final_results
+        # Extract useful fields into plain text
+        for item in results:
+            title = item.get("title", "No title")
+            body  = item.get("body", "")
+            link  = item.get("href", "")
+            snippet = (
+                f"Title: {title}\n"
+                f"Source: {link}\n"
+                f"Content: {body}\n"
+            )
+            snippets.append(snippet)
+
+        text_blob = "\n".join(snippets).strip()
+        return text_blob if text_blob else "Nothing found on the internet!"
+
     except Exception as e:
-        query = "Nothing found on the internet!"
-        print("Error has happened",e)
-        return query
-
-
+        print("Error during internet search:", e)
+        return "Nothing found on the internet!"

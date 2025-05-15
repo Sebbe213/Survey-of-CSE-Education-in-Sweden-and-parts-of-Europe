@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import os
 import openai
 from internet_search import search
+import urllib.parse
 
 # Load environment variables and set API key
 load_dotenv('.env.local')
@@ -23,6 +24,10 @@ original_texts   = get_all_data()        # list of corresponding source strings
 app = Flask(__name__)
 CORS(app)  # enable CORS for all routes (Dev only; adjust in production)
 
+# Utility to decide if local data is missing
+def no_local_data(chunks):
+    return all((not chunk or 'n/a' in chunk.lower() or 'not specified' in chunk.lower()) for chunk in chunks)
+
 # ---- UI route ----
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -31,11 +36,33 @@ def index():
         user_input = request.form.get('question', '').strip()
         if user_input:
             # Embed, retrieve, build prompt, and call the model
-            query_emb = embed_text(user_input)
+            query_emb     = embed_text(user_input)
             search_result = search(user_input)
-            best_texts = find_most_similar_entry(query_emb, data_embeddings, original_texts)
-            prompt     = build_prompt(user_input, search_result, best_texts)
-            answer     = generate_answer(prompt, tokens=1000)
+            best_texts    = find_most_similar_entry(query_emb, data_embeddings, original_texts)
+
+            # Fallback to online-only if no local data
+            if no_local_data(best_texts):
+                prompt = (
+                    f"The user asked: '{user_input}'.\n"
+                    f"I have no relevant local data. Here are internet search results:\n"
+                    f"{search_result}\n\n"
+                    f"Please answer the question based solely on these results."
+                )
+            else:
+                prompt = build_prompt(user_input, search_result, best_texts)
+
+            raw_answer = generate_answer(prompt, tokens=1000)
+
+            # Replace placeholder [URL] with clickable DuckDuckGo search link
+            if '[URL]' in raw_answer:
+                query_enc = urllib.parse.quote_plus(user_input)
+                link = f"https://duckduckgo.com/?q={query_enc}"
+                # wrap the URL as hyperlink visible
+                answer = raw_answer.replace(
+                    '[URL]', f"<a href=\"{link}\" target=\"_blank\">{link}</a>"
+                )
+            else:
+                answer = raw_answer
 
     return render_template('index.html', answer=answer)
 
@@ -48,13 +75,31 @@ def api_ask():
         return jsonify({'error': 'No question provided'}), 400
 
     # Embed, retrieve, build prompt, and query the model
-    query_emb   = embed_text(question)
+    query_emb     = embed_text(question)
     search_result = search(question)
-    best_texts  = find_most_similar_entry(query_emb, data_embeddings, original_texts)
-    prompt      = build_prompt(question,search_result, best_texts)
-    answer_text = generate_answer(prompt, tokens=1000)
-    print(prompt)
-    return jsonify({ 'answer': answer_text })
+    best_texts    = find_most_similar_entry(query_emb, data_embeddings, original_texts)
+
+    # Fallback to online-only if no local data
+    if no_local_data(best_texts):
+        prompt = (
+            f"The user asked: '{question}'.\n"
+            f"I have no relevant local data. Here are internet search results:\n"
+            f"{search_result}\n\n"
+            f"Please answer the question based solely on these results."
+        )
+    else:
+        prompt = build_prompt(question, search_result, best_texts)
+
+    raw_answer = generate_answer(prompt, tokens=1000)
+    # For JSON, include the link directly if needed
+    if '[URL]' in raw_answer:
+        query_enc = urllib.parse.quote_plus(question)
+        link = f"https://duckduckgo.com/?q={query_enc}"
+        answer_text = raw_answer.replace('[URL]', link)
+    else:
+        answer_text = raw_answer
+
+    return jsonify({'answer': answer_text})
 
 if __name__ == '__main__':
     # For development; in production use a proper WSGI server
