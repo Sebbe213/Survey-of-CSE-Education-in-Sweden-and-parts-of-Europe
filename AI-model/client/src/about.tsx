@@ -1,29 +1,9 @@
 // src/about.tsx
 import Header from './header';
-import ibrahim from './assets/ibrahim.jpg';
-import diana    from './assets/diana.jpg';
-import leo      from './assets/leo.jpg';
-import felix    from './assets/felix.jpg';
-import radwan   from './assets/radwan.jpg';
-import sebbe    from './assets/sebbe.jpg';
 import './about.css';
 
 
-interface Student {
-  name: string;
-  image: string;
-  desc: string;
-}
-
 export default function About() {
-  const students: Student[] = [
-    { name: 'Ibrahim Muhammad',            image: ibrahim, desc: 'Computer Science Engineering, Year 3' },
-    { name: 'Diana Lam ',                  image: diana,   desc: 'Computer Science Engineering, Year 3' },
-    { name: 'Leonard Österholm',           image: leo,     desc: 'Computer Science Engineering, Year 3' },
-    { name: 'Felix Nyiri Magnusson',       image: felix,   desc: 'Computer Science Engineering, Year 3' },
-    { name: 'Radwan Rashdan',              image: radwan,  desc: 'Computer Science Engineering, Year 3' },
-    { name: 'Sebastian Raoof',             image: sebbe,   desc: 'Computer Science Engineering, Year 3' },
-  ];
 
   return (
     <>
@@ -31,18 +11,11 @@ export default function About() {
       <main className="about-page">
         <h1>About Us</h1>
         <p>
-          We are a team of Computer Science and Engineering students at Chalmers University
-          of Technology and University of Gothenburg. 
+          We are a team from Chalmers University of Technology and the University of Gothenburg who developed an AI-powered tool as part of our bachelor thesis. Our goal was to find the metrics and develop a system on how to evaluate the quality of higher education in a way that is transparent.
+          This tool uses retrieval augmented generation (RAG) and large language models (LLMs) to provide accurate, interactive answers based on real university data and student priorities. Rather than relying solely on traditional ranking metrics, our system is built around factors that matter most to students such as teaching quality, employability, student experience etc.
+          By embedding institutional data, survey insights and our written report, the AI enables users to explore, compare, and question educational quality in a way that's transparent, student centred, and grounded in real data, not just reputation.
+          This is not just a chatbot it’s a prototype for how AI can support smarter decision-making in higher education.
         </p>
-        <div className="student-grid">
-          {students.map((s) => (
-            <div key={s.name} className="student-card">
-              <img src={s.image} alt={s.name} className="student-img" />
-              <div className="student-name">{s.name}</div>
-              <div className="student-desc">{s.desc}</div>
-            </div>
-          ))}
-        </div>
       </main>
     </>
   );
