@@ -8,7 +8,9 @@ from openai_embed import embed_text
 
 
 def get_all_data():
-    data = ["""University, Number of students, Percentage of international students"
+
+    data = ["""the number of students and percentage of international students in various universities:
+    University, Number of students, Percentage of international students"
 "Chalmers University of Technology (Sweden), 10.999, 17"
 "University of Gothenburg (Sweden), 57.959, 13"
 "KTH Royal Institute of Technology (Sweden), 13.955, 26"
@@ -30,7 +32,8 @@ def get_all_data():
 "Institut Polytechnique de Paris (France), 10.000, 41"
 "Riga Technical University (Latvia), 14.000, 29"
 "University of Tartu (Estonia), 15.206, 10""",
-"""University,Country,Nobel Prizes,Turing Awards,Fields Medals,José Vasconcelos World Award of Education
+""" prizes different universities have won:
+University,Country,Nobel Prizes,Turing Awards,Fields Medals,José Vasconcelos World Award of Education
 Chalmers University of Technology,Sweden,0,0,0,1
 University of Gothenburg,Sweden,1,0,0,0
 KTH Royal Institute of Technology,Sweden,1,0,0,0
@@ -52,7 +55,8 @@ University College London (UCL),England,6,0,1,0
 Institut Polytechnique de Paris (IP Paris),France,3,0,0,0
 Riga Technical University (RTU),Latvia,0,0,0,0
 University of Tartu (UT),Estonia,0,0,0,0""",
-"""University,Country,Employment Rate (%),Year of Reporting,"Degree Level (UG,PG,PhD)",Time Frame (Months),Scope of Employment Rate,Field Specificity
+"""employment(employability) rates of different universities:
+University,Country,Employment Rate (%),Year of Reporting,"Degree Level (UG,PG,PhD)",Time Frame (Months),Scope of Employment Rate,Field Specificity
 Chalmers Tekniska Högskola,Sweden,95.3,2024,PG,36,University-specific,STEM
 University of Gothenburg,Sweden,79,2024,PG,18,University-specific,STM
 KTH Royal Institute of Technology,Sweden,97,2018,PG,24,University-specific,All
@@ -78,7 +82,8 @@ Institut Polytechnique de Paris (IP Paris) (Data from École Polytechnique),Fran
 Riga Technical University (RTU),Latvia,88,2019,PG,12,National,All
 University of Tartu (UT),Estonia,87,2019,UG,6,University-specific,All
 University of Tartu (UT),Estonia,94,2019,PG,6,University-specific,All""",
-"""University Name,International Outlook,Industry Income,Source
+""" International Outlook and Industry Income of different universities:
+University Name,International Outlook,Industry Income,Source
 Chalmers University of Technology (Sweden),77.4,66.0,THE World University Rankings 2023
 University of Gothenburg (Sweden),64.4,77.3,THE World University Rankings 2025
 KTH Royal Institute of Technology (Sweden),82.9,97.3,THE World University Rankings 2025
@@ -100,7 +105,10 @@ University College London (England),97.7,74.9,THE World University Rankings 2025
 Institut Polytechnique de Paris (France),97.0,98.3,THE World University Rankings 2024
 Riga Technical University (Latvia),N/A,N/A,Not listed in latest THE rankings
 University of Tartu (Estonia),N/A,N/A,Not listed in latest THE rankings
-""","""University,Overall Satisfaction,Teaching Quality,Campus Facilities,Support Services,Social Experience
+""",
+""" student survey/barometer results of different universities:
+    N/A means the university does not have or want to share that data.
+University,Overall Satisfaction,Teaching Quality,Campus Facilities,Support Services,Social Experience
 Chalmers Univ. of Technology,90%,90%,85-90%,90%,85%
 Univ. of Gothenburg,89%,89%,90%,91%,89%
 KTH Royal Inst. of Technology,80%,N/A,N/A,N/A,N/A
@@ -122,7 +130,11 @@ University College London (UCL),80%,N/A,N/A,N/A,N/A
 Institut Polytechnique de Paris (France),N/A,N/A,N/A,N/A,N/A
 Riga Technical Univ. (Latvia),N/A,N/A,N/A,N/A,N/A
 Univ. of Tartu (Estonia),90%,95%,N/A,98%,63%
-""","""University,Country,Student-to-Teacher Ratio
+""",
+
+"""
+Important information, how to interpret the student-to-teacher ratio: Higher value means more students per teacher, lower means less students per teacher. 
+University,Country,Student-to-Teacher Ratio
 Chalmers University of Technology,Sweden,11.1
 University of Gothenburg,Sweden,11.5
 KTH Royal Institute of Technology,Sweden,15.6
@@ -189,6 +201,7 @@ student themselves prioritize when evaluating their educational experience. Thro
 comparison, this study seeks to develop an actionable tool that can support Chalmers
 and GU to align their strategic development with what students consider most important
 in their education.""",
+
 """Theoretical Background:
 Understanding how educational quality is evaluated is crucial to identifying the limita-
 tions of existing university rankings and exploring student-centered alternatives. This
@@ -241,7 +254,9 @@ and teaching quality, remain secondary to research-related parameters. While ARW
 does include teaching quality, this component is limited to prestigious academic awards
 received by alumni. These findings indicate that current global ranking systems do not
 emphasize educational quality based on student values. """ ,
-"""Limitations of University Rankings:
+"""
+Limitations of University Rankings:
+
 University rankings are widely utilized by different groups for decision-making. Students
 often use rankings to help them choose a university, assuming that higher-ranked insti-
 tutions provide better educational and career opportunities [1]. Similarly, universities
@@ -295,69 +310,17 @@ its global ranking position remains influenced by metrics that do not fully acco
 its emphasis on applied education and industry collaboration [12]. As Chalmers seeks to
 establish itself as a leader in education, it becomes crucial to critically evaluate existing
 ranking methodologies and explore alternative ways to assess and enhance educational
-quality.""", """Limitations of University Rankings
-University rankings are widely utilized by different groups for decision-making. Students
-often use rankings to help them choose a university, assuming that higher-ranked insti-
-tutions provide better educational and career opportunities [1]. Similarly, universities
-use rankings as a benchmarking tool to assess their position relative to peer institutions,
-identifying areas for improvement and strategic plans. Additionally, rankings influence
-institutional strategies, faculty recruitment, and funding opportunities, reinforcing their
-importance in the broader higher education landscape. However, despite their widespread
-use, rankings remain a controversial and often misleading measure of educational quality.
-The most influential rankings, ARWU, THE and QS, have provided a standardized frame-
-work for comparing institutions. However, they have also introduced significant limita-
-tions and biases that shape how universities are perceived and operate. These rankings
-prioritize research output, often measured by citation counts, journal publications, and in-
-stitutional prestige. While research is a crucial function of universities, these rankings fail
-to assess the quality of education, student learning outcomes, and teaching effectiveness.
-As a result, institutions that focus on pedagogical innovation and student engagement
-are often undervalued in global rankings.
-Another concern surrounding these ranking systems is their increasing commercializa-
-tion, which raises ethical questions about objectivity and fairness. Many ranking or-
-4
-ganizations offer consultancy services that advise universities on how to improve their
-ranking positions [7]. This pay-to-play model creates a conflict of interest, as the same
-organizations that evaluate universities also profit from guiding them. Additionally, some
-rankings require universities to pay fees for inclusion or for access to detailed reports on
-their performance, further privileging institutions with greater financial resources.
-This commercialization encourages universities to prioritize ranking-driven strategies [7],
-such as increasing research output or hiring highly cited faculty, rather than investing
-in teaching excellence, curriculum development, or student-focused initiatives. Conse-
-quently, universities that emphasize innovative teaching and student engagement but
-lack the financial means to optimize their ranking strategies risk being undervalued in
-global comparisons.
-The overemphasis on research metrics in university rankings is particularly problem-
-atic for technical and applied fields, such as engineering and computer science, where
-practical skills, real-world problem-solving, and employer partnerships are crucial. Uni-
-versities that invest in innovative teaching methods, interdisciplinary collaboration, and
-student-centered learning often find their strengths underrepresented in ranking method-
-ologies [8]. Furthermore, rankings tend to favor elite research universities, reinforcing an
-institutional hierarchy that does not necessarily reflect the actual quality of education or
-the readiness of graduates for industry demands.
-Last year, concerns over these issues led the University of Zurich to withdraw from the
-THE Rankings [9]. The university criticized the ranking for its emphasis on measurable
-outputs, such as the number of publications, which can push institutions to prioritize
-quantity over research quality. Additionally, they argued that the ranking failed to cap-
-ture the full scope of academic contributions by oversimplifying university excellence into
-a set of limited parameters. Another prestigious institution, Utrecht University, also
-withdrew from the THE Rankings and QS Rankings [10, 11]. They also share the same
-concerns as the University of Zurich about the perverse incentives created by rankings.
-They raised issues over the commercial aspects of rankings, in particular how universities
-are expected to provide data and fees to maintain their standings.
-Chalmers has strong industry collaborations and a focus on applied learning. Unlike
-many Swedish universities, Chalmers operates as a private foundation university, giving
-it more autonomy in shaping educational strategies. However, despite these advantages,
-its global ranking position remains influenced by metrics that do not fully account for
-its emphasis on applied education and industry collaboration [12]. As Chalmers seeks to
-establish itself as a leader in education, it becomes crucial to critically evaluate existing
-ranking methodologies and explore alternative ways to assess and enhance educational
 quality.""",
 
-"""Indicators for Educational Quality:
+"""Potential Indicators for Educational Quality:
+
 To provide a more comprehensive assessment, this section explores key indicators that
 are widely used by traditional ranking systems as well as being incorporated into our
 survey. Having a clear understanding of these metrics are essential for interpreting the
 findings of this study.
+
+The factors below are just indicators and do not represent the full picture of educational quality. These are aspects that can have an impact but *Should not* be used as
+a definition. It should be made very clear that they can have a potential impact but not with 100% certainty .
 
 University reputation:
 The reputation of universities is a complex yet important issue. A university reputation
@@ -882,8 +845,8 @@ tional ranking systems, and the resulting shifts in university rankings when app
 student-centered evaluation.
 5.1 Student-Preferred Educational Quality Indicators
 To better understand what students themselves consider important when evaluating the
-quality of education, a survey (n = 108) was conducted, asking students to rate various
-parameters on a scale from 1 (least important) to 8 (most important).""","""According to the result of the survey, the most highly valued parameters were Teaching
+quality of education, a survey at Chalmers (n = 108) was conducted, asking students to rate various
+parameters on a scale from 1 (least important) to 8 (most important).According to the result of the survey, the most highly valued parameters were Teaching
 Quality (mean = 6.79), Employability (mean = 6.67) and Curriculum (mean = 6.35).
 These were followed closely by University reputation (mean = 5.75) and Support Services
 (mean = 4.73) and Campus Facilities (mean = 5.60). By contrast, parameters such as
@@ -904,8 +867,7 @@ based or environmental factors. These findings underscore the need to re-evaluat
 educational assessment models that heavily weight research and prestige, potentially at
 the expense of direct student learning outcomes.""",
 
-"""Comparison of Global University Rankings and Student-
-Centered Ranking
+"""Comparison of Global University Rankings and Student-Centered Ranking
 To enable a consistent comparison across the major global university rankings, each
 university’s position in the ARWU, THE and QS ranking systems was retrieved. Because
 the original rankings span different ranges and criteria, we re-ranked the 21 universities
@@ -936,9 +898,9 @@ Rank,University,World Ranking (ARWU)
 18,Universitat Politècnica de València,601–700
 19,University of Tartu,601–700
 20,Gdańsk University of Technology,801–900
-21,Warsaw University of Technology,901–1000""",
+21,Warsaw University of Technology,901–1000
 
-"""Ranking from Times Higher Education:
+Ranking from Times Higher Education:
 Rank,University,World Ranking (THE)
 1,University of Oxford,1
 2,University of Cambridge,2
@@ -960,9 +922,9 @@ Rank,University,World Ranking (THE)
 18,Universitat Politècnica de València,401–500
 19,University of Gothenburg,501–600
 20,Gdańsk University of Technology,801–1000
-20,Riga Technical University,801–1000""",
+20,Riga Technical University,801–1000
 
-"""Ranking from QS World University Rankings:
+Ranking from QS World University Rankings:
 Rank,University,World Ranking (QS)
 1,University of Oxford,2
 2,University of Cambridge,4
@@ -986,7 +948,7 @@ Rank,University,World Ranking (QS)
 20,Riga Technical University,451–500
 21,University of Gothenburg,501–550
 """,
-"""Bachelor ranking based on a student centric model: 
+"""University ranking created by the writers (bachelor students) based on a student centric model: 
 Name of University,Student Ranking,Average Rank Change in comparison with traditional ranking
 University of Oxford,1,1,+0
 University of Cambridge,2,2,+0
@@ -1027,8 +989,10 @@ and Gd´ansk University of Technology remained at the bottom. Nine universities 
 in ranking in the student-centered ranking compared to their average global ranking. The
 largest declines were observed for UCL (-11), Technical University of Munich (-9), KTH
 (-8), RWTH Aachen (-8) and Technische Universit¨at Berlin (-8).
-""","""
+""",
+"""
 Discussion:
+
 The results of this study highlight a clear disconnect between what students value in their
 educational experience and what current university ranking systems prioritize.
 The student survey results indicated that the most important parameters for students
@@ -1051,9 +1015,7 @@ systems. Meanwhile, parameters that student rated as less important, such as res
 citations and academic reputation, dominate these ranking methodologies. These findings
 confirm previous observations that university rankings are primarily designed to measure
 research excellence rather than educational quality.
-This comparison highlights a clear gap between what students consider important for ed-
-27
-ucational quality and what global university rankings prioritize. While there is some
+This comparison highlights a clear gap between what students consider important for educational quality and what global university rankings prioritize. While there is some
 partial alignment (e.g., QS’s inclusion of employability metrics see figure 3), many
 student-valued aspects are underrepresented in current ranking frameworks.
 For Chalmers and GU to achieve their strategic aim of becoming ”top educators” in Swe-
@@ -1082,7 +1044,10 @@ rankings are modest.
 The student-centered ranking model also offers a framework for ongoing strategic evalu-
 ation. By updating the model with student input, Chalmers and GU can continuously
 monitor how well their educational offerings align with evolving student expectations,
-ensuring sustained leadership in CSE education in Sweden and Europe.
+ensuring sustained leadership in CSE education in Sweden and Europe. """,
+
+"""
+Our-developed-tool to support strategic decision-making:
 The AI-assisted tool developed as part of this study serves as a practical mechanism
 to support strategic decision-making aligned with student priorities. By enabling dy-
 namic exploration of student-centered educational data, it allows faculty, administrators,
@@ -1105,7 +1070,10 @@ educational priorities and institutional strategies evolve. Thus, while the AI-a
 represents an important step toward data-driven, student-centered strategic development,
 it should be viewed as a complementary support system rather than a definitive evalua-
 tor. Continuous refinement, critical oversight, and integration with broader institutional
-decision-making processes are essential to fully realize its potential impact.""","""Limitations
+decision-making processes are essential to fully realize its potential impact.""",
+
+"""Limitations:
+
 The survey provided a wealth of data regarding student priorities, but encountered several
 limitations. The forced ranking method over simplified decision-making, while minimal
 response rate to our open-ended question significantly limited our ability to gather qual-
@@ -1138,8 +1106,9 @@ rics for key qualitative aspects required us to use proxy indicators. Finally, w
 narrow the scope of our analysis, such as deciding whether to include only Computer
 Science programs, or broader categories like Computer Science and Engineering (CSE),
 which further constrained our comparisons.
-29
-6.2 Future Work
+
+
+Future Work: 
 This thesis highlighted several limitations and areas where further research could add
 valuable insights. One major challenge was obtaining relevant data, especially from the
 student surveys. The available datasets were often limited in scope or lacked the depth
@@ -1191,7 +1160,8 @@ Overall, the project promotes societal benefit by encouraging a more student-cen
 perspective on educational quality. Ethical risks, such as bias amplification and data
 handling limitations, have been minimized through careful methodology design, trans-
 parency, and responsible use of AI technologies.""" ,
-"""Conclusions
+
+"""Conclusions:
 The findings of our study reveal that there exists a significant gap between the priorities
 of students and those of current ranking institutions. More often than not, traditional
 ranking metrics are an inversion of student priorities. It was clearly observed that univer-sities consistently maintain comprehensive data on metrics utilized by traditional ranking

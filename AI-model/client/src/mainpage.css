@@ -1,4 +1,11 @@
 
+.answer-markdown {
+  margin-bottom: 1.5rem;
+  color: #eee;
+}
+.answer-markdown li {
+  margin-left: 1.5rem;
+}
 
 /* Page background and text color */
 body {
@@ -68,7 +75,7 @@ body {
   .reset-button {
     padding: 0.5rem 1rem;
     border: none;
-    background-color: blueviolet;
+    background-color: #26D4CB;
     color: white;
     border-radius: 6px;
     cursor: pointer;

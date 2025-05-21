@@ -1,21 +1,64 @@
-#Local .env files
-.env.local
-# Node modules
-/client/node_modules/
-/server/node_modules/
+# Project-level .gitignore for Survey-of-CSE-Education
 
-# Vite cache and build output
+# IDE configs and local settings
+/.idea/
+/.vscode/
+*.iml
+
+# Node modules and build outputs (client)
+/client/node_modules/
 /client/dist/
 /client/.vite/
-/server/static/assets/*
+/client/.cache/
+
+# Node modules (server, if any)
+/server/node_modules/
+
+# Python cache and virtualenvs
+*.py[cod]
+__pycache__/
+.env
+.env.*.local
+venv/
+ENV/
+
+# Build and static assets
+/server/static/assets/
+/build/
 
 # TypeScript cache / build info
 *.tsbuildinfo
 
-# OS / editor cruft
-.DS_Store
+# Logs and debug
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
 
-# in .gitignore
+docker-compose.override.yml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Coverage and test reports
+coverage/
+junit-reports/
+/__pycache__/
+
+# Embedded data or large artifacts
 embedded_data.json
 
+# Misc
+test.txt
+
+# Lock files (optional if you commit package-lock.json)
+# /client/package-lock.json
+# /server/package-lock.json
+
+# Ensure environment keys are not committed
+*/.env.local
+*/.env.production
+
+# End of .gitignore
